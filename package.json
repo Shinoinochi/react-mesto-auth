@@ -1,5 +1,5 @@
 {
-  "name": "mesto-react",
+  "name": "react-mesto-auth",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,7 @@
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://shinoinochi.github.io/mesto-react/",
+  "homepage": "https://shinoinochi.github.io/react-mesto-auth/",
   "eslintConfig": {
     "extends": [
       "react-app",
