@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import { api } from '../utils/api';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 function Register({ onAuth, setMessage, isLogin }) {
     const navigate = useNavigate();
     const [user, setUser] = React.useState({email: '', password: ''});
@@ -41,7 +41,7 @@ function Register({ onAuth, setMessage, isLogin }) {
                     <input className="sign__input" type="password" name="password" required placeholder="Пароль" onChange={handleChange} value={setUser.password}></input>
                     <button className="sign__button" type="submit">Зарегистрироваться</button>
                 </form>
-                <a className="sign__link" href="/sign-in">Уже зарегистрированы? Войти</a>
+                <Link to="/sign-in" replace className="sign__link">Уже зарегистрированы? Войти</Link>
             </div>
         </div>
         

@@ -12,7 +12,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, user, hand
             <p className='menu__email'>{user}</p>
             <a className='menu__link' onClick={logout} href='sign-in'>Выйти</a>
         </div>
-        <Header email={user} onClick={logout} text={'Выйти'} onMenuClick={onMenuClick} active={'header__link_active'} isLogin={isLogin}> 
+        <Header email={user} onClick={logout} text={'Выйти'} onMenuClick={onMenuClick} active={'header__link_active'} isLogin={isLogin} link={'/sign-in'}> 
             <button className='header__button' onClick={onMenuClick}></button> 
         </Header>
         <main className="content">

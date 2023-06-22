@@ -1,4 +1,5 @@
 import headerLogo from '../images/Vector.svg';
+import {Link} from 'react-router-dom';
 function Header({ link, email, text, onClick, children, active, isLogin }) {
     return (
         <>
@@ -10,7 +11,7 @@ function Header({ link, email, text, onClick, children, active, isLogin }) {
             {children}
             <div className={isLogin? 'header__links' : 'header__links_auth'}>    
                 <p className='header__email'>{email}</p>
-                <a className={`header__link ${active}`} onClick={onClick} href={link}>{text}</a>
+                <Link to={link} replace onClick={onClick} className={`header__link ${active}`}>{text}</Link>
             </div>
         </header>
         </>
