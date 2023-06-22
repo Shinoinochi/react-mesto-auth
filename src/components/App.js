@@ -172,8 +172,8 @@ function App() {
         <div className="pages">
             <CurrentUserContext.Provider  value={currentUser}>
                 <Routes>
-                    <Route path="/sign-in" element={<Login isLogin={login}  onAuth={handleAuth} setMessage={authMessage} login={handleLoginChange} />} />
-                    <Route path="/sign-up" element={<Register isLogin={login}  onAuth={handleAuth} setMessage={authMessage}/>} />
+                    <Route path="sign-in" element={<Login isLogin={login}  onAuth={handleAuth} setMessage={authMessage} login={handleLoginChange} />} />
+                    <Route path="sign-up" element={<Register isLogin={login}  onAuth={handleAuth} setMessage={authMessage}/>} />
                     <Route path="/" element={
                         <ProtectedRouteElement loggedIn={login}> 
                             <Main 
