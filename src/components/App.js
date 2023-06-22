@@ -174,7 +174,7 @@ function App() {
                 <Routes>
                     <Route path="/sign-up" element={<Login isLogin={login}  onAuth={handleAuth} setMessage={authMessage} login={handleLoginChange} />} />
                     <Route path="/sign-in" element={<Register isLogin={login}  onAuth={handleAuth} setMessage={authMessage}/>} />
-                    <Route path="/*" element={
+                    <Route path="/" element={
                         <ProtectedRouteElement loggedIn={login}> 
                             <Main 
                                 onEditAvatar={handleEditAvatarClick}
