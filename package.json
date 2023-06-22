@@ -20,7 +20,7 @@
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://shinoinochi.github.io/react-mesto-auth/",
+  "homepage": "https://shinoinochi.github.io/react-mesto-auth",
   "eslintConfig": {
     "extends": [
       "react-app",
