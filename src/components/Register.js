@@ -32,7 +32,7 @@ function Register({ onAuth, setMessage, isLogin }) {
     }
     return (
         <>
-        <Header link={'sign-in'} text={'Войти'} isLogin={isLogin}/>
+        <Header link={'/sign-in'} text={'Войти'} isLogin={isLogin}/>
         <div className="sign" >
             <div className="sign__container">
                 <h2 className="sign__header">Регистрация</h2>
