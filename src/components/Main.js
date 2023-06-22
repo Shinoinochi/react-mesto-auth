@@ -1,4 +1,5 @@
 import { CurrentUserContext } from '../context/CurrentUserContext.js';
+import {Link} from 'react-router-dom';
 import Card from './Card.js';
 import React from 'react';
 import Footer from './Footer.js';
@@ -10,7 +11,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, user, hand
         <>
         <div className='menu'>   
             <p className='menu__email'>{user}</p>
-            <a className='menu__link' onClick={logout} href='sign-in'>Выйти</a>
+            <Link to='/sign-in' replace onClick={logout} className='menu__link'>Выйти</Link>
         </div>
         <Header email={user} onClick={logout} text={'Выйти'} onMenuClick={onMenuClick} active={'header__link_active'} isLogin={isLogin} link={'/sign-in'}> 
             <button className='header__button' onClick={onMenuClick}></button> 
