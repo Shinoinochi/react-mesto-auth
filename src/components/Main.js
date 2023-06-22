@@ -19,7 +19,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, user, hand
             <section className="profile">
                 <div className="profile__avatar">
                     <button 
-                        type="button" 
+                        type="button"
                         className="profile__avatar-button" 
                         onClick={onEditAvatar}></button>
                     <img

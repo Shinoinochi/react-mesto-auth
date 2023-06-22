@@ -41,7 +41,7 @@ function Register({ onAuth, setMessage, isLogin }) {
                     <input className="sign__input" type="password" name="password" required placeholder="Пароль" onChange={handleChange} value={setUser.password}></input>
                     <button className="sign__button" type="submit">Зарегистрироваться</button>
                 </form>
-                <a className="sign__link" href="sign-in">Уже зарегистрированы? Войти</a>
+                <a className="sign__link" href="/sign-in">Уже зарегистрированы? Войти</a>
             </div>
         </div>
         
