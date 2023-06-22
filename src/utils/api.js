@@ -128,11 +128,11 @@ export default class Api {
         body: JSON.stringify({password, email})
       })
       .then(res => {
-        if (res.ok) {
-          return res.json();}
+        if (res.ok) return res.json();
         return this._getErrorAuth(res);
       });
     }
+
     checkToken(token) {
       return fetch('https://auth.nomoreparties.co/users/me', {
         method: 'GET',
@@ -141,8 +141,15 @@ export default class Api {
           'Authorization': `Bearer ${token}`,
         }
       })
-      .then(res => { return res.json()})
-      .then(data => {return data})
+      .then(res => { 
+        return res.json()
+      })
+      .then(data => {
+        return data
+      })
+      .catch((err) => {
+        console.log(err.status);
+      })
     }
   }
 
