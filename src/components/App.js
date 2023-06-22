@@ -29,18 +29,20 @@ function App() {
     const navigate = useNavigate();
     //Получение данных о пользователе и карточках
     React.useEffect(() => {
-        Promise.all([
-            api.getUserData(),
-            api.getInitialCards()
-        ])
-        .then(([user, cards]) => {
-            setCurrentUser(user);
-            setCards(cards);
-        })
-        .catch(err => {
-            console.log(err.status);
-        })
-    }, []);
+        if (login) {
+            Promise.all([
+                api.getUserData(),
+                api.getInitialCards()
+            ])
+            .then(([user, cards]) => {
+                setCurrentUser(user);
+                setCards(cards);
+            })
+            .catch(err => {
+                console.log(err.status);
+            })
+        }
+    }, [login]);
     //Блок авторизации
     React.useEffect(() => {
         handleTokenCheck();
@@ -55,8 +57,8 @@ function App() {
         isLogin(!login);
     }
     function handleTokenCheck() {
-        if(localStorage.getItem('token')) {
-            const jwt = localStorage.getItem('token');
+        const jwt = localStorage.getItem('token');
+        if(jwt) {
             api.checkToken(jwt).then((res) => {
                 setEmail(res.data.email);
                 isLogin(true);
@@ -66,6 +68,45 @@ function App() {
                 console.log(err.status);
             });
         }
+    }
+    //Вход в систему
+    function handleLogin(user, setUser) {
+        api.login(user.password, user.email)
+        .then((user) => {
+            if(user.token) {
+                console.log(true);
+                localStorage.setItem('token', user.token);
+                setUser({email: '', password: ''});
+                handleLoginChange();
+                navigate('/', {replace: true})
+            }
+        })
+        .catch((err) => {
+            handleAuth();
+            setMessage({
+                message: "Что-то пошло не так! Попробуйте еще раз.",
+                isCorrect: false
+            });
+        });
+    }
+    //Регистрация
+    function handleRegister(user) {
+        api.registration(user.password, user.email)
+        .then((user) => {
+            handleAuth();
+            setMessage({
+                message: "Вы успешно зарегистрировались!",
+                isCorrect: true
+            });
+            navigate('/sign-in', {replace: true});
+        })
+        .catch((err) => {
+            handleAuth();
+            setMessage({
+                message: "Что-то пошло не так! Попробуйте еще раз.",
+                isCorrect: false
+            });
+        });
     }
     //Открытие бургер-меню
     function handleMenuClick() {
@@ -172,8 +213,8 @@ function App() {
         <div className="pages">
             <CurrentUserContext.Provider  value={currentUser}>
                 <Routes>
-                    <Route path="/sign-in" element={<Login isLogin={login}  onAuth={handleAuth} setMessage={authMessage} login={handleLoginChange} />} />
-                    <Route path="/sign-up" element={<Register isLogin={login}  onAuth={handleAuth} setMessage={authMessage}/>} />
+                    <Route path="/sign-in" element={<Login isLogin={login} onLogin={handleLogin} />} />
+                    <Route path="/sign-up" element={<Register isLogin={login} onRegister={handleRegister} />} />
                     <Route path="/" element={
                         <ProtectedRouteElement loggedIn={login}> 
                             <Main 

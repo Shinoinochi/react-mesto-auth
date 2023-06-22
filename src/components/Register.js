@@ -1,9 +1,7 @@
 import React from 'react';
 import Header from './Header';
-import { api } from '../utils/api';
-import {useNavigate, Link} from 'react-router-dom';
-function Register({ onAuth, setMessage, isLogin }) {
-    const navigate = useNavigate();
+import { Link } from 'react-router-dom';
+function Register({ isLogin, onRegister }) {
     const [user, setUser] = React.useState({email: '', password: ''});
     //Получение и запись значений из инпутов
     function handleChange(evt) {
@@ -13,22 +11,7 @@ function Register({ onAuth, setMessage, isLogin }) {
     //Отправка данных на сервер и регистрация пользователя
     function handleSubmit(evt) {
         evt.preventDefault();
-        api.registration(user.password, user.email)
-        .then((user) => {
-            onAuth();
-            setMessage({
-                message: "Вы успешно зарегистрировались!",
-                isCorrect: true
-            });
-            navigate('/sign-in', {replace: true});
-        })
-        .catch((err) => {
-            onAuth();
-            setMessage({
-                message: "Что-то пошло не так! Попробуйте еще раз.",
-                isCorrect: false
-            });
-        });
+        onRegister(user);
     }
     return (
         <>
