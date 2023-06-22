@@ -75,7 +75,7 @@ function App() {
     //Выход из аккаунта
     function handleLogout() {
         localStorage.removeItem('token');
-        navigate('/sign-up', {replace: true});
+        navigate('/sign-in', {replace: true});
         isLogin(false);
     }
     //Удаление карточки
@@ -172,8 +172,8 @@ function App() {
         <div className="pages">
             <CurrentUserContext.Provider  value={currentUser}>
                 <Routes>
-                    <Route path="/sign-up" element={<Login isLogin={login}  onAuth={handleAuth} setMessage={authMessage} login={handleLoginChange} />} />
-                    <Route path="/sign-in" element={<Register isLogin={login}  onAuth={handleAuth} setMessage={authMessage}/>} />
+                    <Route path="/sign-in" element={<Login isLogin={login}  onAuth={handleAuth} setMessage={authMessage} login={handleLoginChange} />} />
+                    <Route path="/sign-up" element={<Register isLogin={login}  onAuth={handleAuth} setMessage={authMessage}/>} />
                     <Route path="/" element={
                         <ProtectedRouteElement loggedIn={login}> 
                             <Main 

@@ -20,7 +20,7 @@ function Register({ onAuth, setMessage, isLogin }) {
                 message: "Вы успешно зарегистрировались!",
                 isCorrect: true
             });
-            navigate('/sign-up', {replace: true});
+            navigate('/sign-in', {replace: true});
         })
         .catch((err) => {
             onAuth();
@@ -32,7 +32,7 @@ function Register({ onAuth, setMessage, isLogin }) {
     }
     return (
         <>
-        <Header link={'sign-up'} text={'Войти'} isLogin={isLogin}/>
+        <Header link={'sign-in'} text={'Войти'} isLogin={isLogin}/>
         <div className="sign" >
             <div className="sign__container">
                 <h2 className="sign__header">Регистрация</h2>
@@ -41,7 +41,7 @@ function Register({ onAuth, setMessage, isLogin }) {
                     <input className="sign__input" type="password" name="password" required placeholder="Пароль" onChange={handleChange} value={setUser.password}></input>
                     <button className="sign__button" type="submit">Зарегистрироваться</button>
                 </form>
-                <a className="sign__link" href="sign-up">Уже зарегистрированы? Войти</a>
+                <a className="sign__link" href="sign-in">Уже зарегистрированы? Войти</a>
             </div>
         </div>
         
