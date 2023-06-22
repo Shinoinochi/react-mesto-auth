@@ -60,7 +60,7 @@ function App() {
             api.checkToken(jwt).then((res) => {
                 setEmail(res.data.email);
                 isLogin(true);
-                navigate('/', {replace: true});
+                navigate('/react-mesto-auth', {replace: true});
             })
             .catch((err) => {
                 console.log(err.status);
@@ -75,7 +75,7 @@ function App() {
     //Выход из аккаунта
     function handleLogout() {
         localStorage.removeItem('token');
-        navigate('/sign-in', {replace: true});
+        navigate('react-mesto-auth/sign-in', {replace: true});
         isLogin(false);
     }
     //Удаление карточки
@@ -172,9 +172,9 @@ function App() {
         <div className="pages">
             <CurrentUserContext.Provider  value={currentUser}>
                 <Routes>
-                    <Route path="/sign-in" element={<Login isLogin={login}  onAuth={handleAuth} setMessage={authMessage} login={handleLoginChange} />} />
-                    <Route path="/sign-up" element={<Register isLogin={login}  onAuth={handleAuth} setMessage={authMessage}/>} />
-                    <Route path="/" element={
+                    <Route path="sign-in" element={<Login isLogin={login}  onAuth={handleAuth} setMessage={authMessage} login={handleLoginChange} />} />
+                    <Route path="sign-up" element={<Register isLogin={login}  onAuth={handleAuth} setMessage={authMessage}/>} />
+                    <Route path="react-mesto-auth/" element={
                         <ProtectedRouteElement loggedIn={login}> 
                             <Main 
                                 onEditAvatar={handleEditAvatarClick}
