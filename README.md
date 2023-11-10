@@ -33,7 +33,7 @@ npm build
 ```
 Локальный запуск
 ```
-npm run dev
+npm run start
 ```
 
 ## Статус: Завершен ✅
